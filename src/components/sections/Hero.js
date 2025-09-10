@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Zap } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToSEOTool = () => {
+    document.getElementById('seo-tool')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800">
       <div className="container mx-auto px-4 relative z-10">
@@ -46,23 +50,43 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <motion.a
-              href="#services"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 shadow-lg"
+            <motion.button
+              onClick={scrollToSEOTool}
+              className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 flex items-center space-x-2 shadow-lg"
               whileHover={{ scale: 1.05 }}
             >
-              <span>Explore Our Services</span>
-              <ArrowRight size={20} />
-            </motion.a>
+              <Zap size={20} />
+              <span>Free SEO Analysis</span>
+            </motion.button>
             
             <motion.a
-              href="#seo-tool"
+              href="#services"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
             >
-              <Play size={20} />
-              <span>Try Free SEO Tool</span>
+              <ArrowRight size={20} />
+              <span>Our Services</span>
             </motion.a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="mt-12 flex justify-center items-center space-x-8 text-sm opacity-80"
+          >
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>500+ Websites Analyzed</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>Free Instant Reports</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>Expert Recommendations</span>
+            </div>
           </motion.div>
         </div>
       </div>
